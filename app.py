@@ -4,8 +4,12 @@ import streamlit as st
 
 model = Model()
 
-if __name__ == '__main__':
-    input = st.empty()
-    txt = input.text_input("Insert text:")
-    bt = st.button("Text01")
+input = st.empty()
+txt = input.text_input("Insert text:")
+if st.button("Check"):
+    
+    prediction = model.predict(txt)    
+    out = f"This is a normal Message! ({txt})"
+    
+    if prediction: out = "IO Detected!"
     st.write(txt)
