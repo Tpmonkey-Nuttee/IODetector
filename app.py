@@ -3,7 +3,6 @@ import time
 import random
 
 import pickle
-import os
 
 import pythainlp
 import re
@@ -13,11 +12,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 import streamlit as st
 
-_token = os.getenv("token")
-if _token is None:
-    import configparser
-    _config = configparser.ConfigParser()
-    _token = _config["SECRET"]["BotToken"]
+_token = st.secrets['token']
 
 REPLY_MESSAGES = ["You FOOLS!"]
 
