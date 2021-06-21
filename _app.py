@@ -1,3 +1,5 @@
+# Streamlit failed to run discord.py because of Streamlit run our file outside of Main Thread
+
 import discord
 import asyncio
 import time
