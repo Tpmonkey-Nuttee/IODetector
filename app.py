@@ -11,6 +11,8 @@ import string
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+import streamlit as st
+
 _config = configparser.ConfigParser()
 _token = _config["SECRET"]["BotToken"]
 REPLY_MESSAGES = ["You FOOLS!"]
