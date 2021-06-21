@@ -64,7 +64,6 @@ class Model:
         
         print(text)
         print(self.vectorizer)
-        vectorized = self.vectorizer.transform( [text] )
-        prediction = self.model.predict( vectorized.toarray() )
+        prediction = self.model.predict( self.vectorizer.transform( [text] ).toarray() )
         
         return prediction[0] == 1
