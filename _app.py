@@ -1,10 +1,4 @@
 # Streamlit failed to run discord.py because of Streamlit run our file outside of Main Thread
-
-import discord
-import asyncio
-import time
-import random
-
 import pickle
 
 import pythainlp
@@ -12,12 +6,6 @@ import re
 import string
 
 from sklearn.feature_extraction.text import TfidfVectorizer
-
-import streamlit as st
-
-_token = st.secrets['token']
-
-REPLY_MESSAGES = ["You FOOLS!"]
 
 class Model:
     def __init__(self) -> None:
@@ -70,32 +58,3 @@ class Model:
         prediction = self.model.predict( vectorized.toarray() )
         
         return prediction[0] == 1
-
-class BotClient(discord.Client):
-    async def on_ready(self) -> None:
-        self.io_model = Model()
-        print("Bot Connected")
-        print(f"Login as {self.user.name}")
-
-    async def on_message(self, message: discord.Message) -> None:
-        # Process Message if It doesn't come from Bot.
-        if not message.author.bot: await self.process_message(message)
-
-    async def process_message(self, message: discord.Message) -> None:
-        t = time.time()
-        prediction = self.io_model.predict(message.content)
-        
-        if prediction:
-            reply = f"**{message.author}** {random.choice(REPLY_MESSAGES)}"
-            try: await message.channel.send(reply)
-            except: pass
-        print(f"Finished Processing Message | Time Took: {time.time() - t}s | Return Value: {prediction}")
-
-_intents = discord.Intents.none()
-_intents.messages = True
-
-loop = asyncio.new_event_loop()
-asyncio.set_event_loop(loop)
-
-bc = BotClient(intents = _intents, loop = loop)
-bc.run(_token)
