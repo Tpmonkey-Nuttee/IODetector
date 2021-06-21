@@ -45,7 +45,6 @@ class Model:
         text = re.sub(r'#', '', text)
         # Remove twitter tag like @Nuttee
         text = re.sub("/(^|[^@\w])@(\w{1,15})\b/", "", text)
-        text = remove_emoji(text)
 
         # Remove punc and English alphabet
         return text.translate(str.maketrans('', '', string.printable))
