@@ -93,7 +93,7 @@ class BotClient(discord.Client):
         print(f"Finished Processing Message | Time Took: {time.time() - t}s | Return Value: {prediction}")
 
 _intents = discord.Intents.none()
-_intents.message = True
+_intents.messages = True
 
 bc = BotClient(intents = _intents)
 bc.run(_token)
