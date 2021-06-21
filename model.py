@@ -2,6 +2,8 @@
 import pickle
 
 import pythainlp
+from pythainlp.corpus import wordnet
+from pythainlp.tokenize import word_tokenize
 import re
 import string
 
@@ -26,7 +28,7 @@ class Model:
   
     def __split(self, text: str):
         # tokenize text using pythainlp tokenizer
-        tokens = pythainlp.tokenize.word_tokenize(text)
+        tokens = word_tokenize(text)
 
         # remove stop words
         tokens = [i for i in tokens if not i in self.th_stop]
@@ -34,7 +36,7 @@ class Model:
         # Find Stemword in Thai
         tokens_temp = []
         for i in tokens:
-            w_syn = pythainlp.corpus.wordnet.synsets(i)
+            w_syn = wordnet.synsets(i)
             if ( len(w_syn) > 0) and ( len( w_syn[0].lemma_names('tha') ) > 0 ):
                 tokens_temp.append( w_syn[0].lemma_names('tha')[0] )
             else:
