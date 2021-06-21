@@ -70,9 +70,8 @@ class Model:
 
 class BotClient(discord.Client):
     def __init__(self, *args, **kwargs) -> None:
-        self.io_model = Model()
-
         super().__init__(*args, **kwargs)
+        self.io_model = Model()        
 
     async def on_ready(self) -> None:
         print("Bot Connected")
