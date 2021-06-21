@@ -53,7 +53,7 @@ class Model:
         text = self.__clean(text)
         if text.strip() == "": return False
         
-        vectorized = self.vectorizer(text)
+        vectorized = self.vectorizer.transform(text)
         prediction = self.model.predict( vectorized.toarray() )
         
         return prediction[0] == 1
