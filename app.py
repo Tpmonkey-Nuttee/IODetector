@@ -11,4 +11,4 @@ prediction = model.predict(txt)
 out = f"This is a normal Message! ({txt})"
 
 if prediction: out = "IO Detected!"
-st.write(txt)
+st.write(out)
