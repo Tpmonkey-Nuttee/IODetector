@@ -70,12 +70,8 @@ class Model:
         return prediction[0] == 1
 
 class BotClient(discord.Client):
-    def __init__(self, *args, **kwargs) -> None:
-        self.loop = asyncio.get_event_loop()
-        super().__init__(*args, **kwargs)
-        self.io_model = Model()        
-
     async def on_ready(self) -> None:
+        self.io_model = Model()
         print("Bot Connected")
         print(f"Login as {self.user.name}")
 
