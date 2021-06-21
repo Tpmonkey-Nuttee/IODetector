@@ -29,7 +29,7 @@ class Model:
         tokens = pythainlp.tokenize.word_tokenize(text)
 
         # remove stop words
-        tokens = [i for i in tokens if not i in th_stop]
+        tokens = [i for i in tokens if not i in self.th_stop]
 
         # Find Stemword in Thai
         tokens_temp = []
