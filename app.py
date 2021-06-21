@@ -92,5 +92,8 @@ class BotClient(discord.Client):
 _intents = discord.Intents.none()
 _intents.messages = True
 
-bc = BotClient(intents = _intents)
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
+
+bc = BotClient(intents = _intents, loop = loop)
 bc.run(_token)
