@@ -62,6 +62,8 @@ class Model:
         text = self.__clean(text)
         if text.strip() == "": return False
         
+        print(text)
+        print(self.vectorizer)
         vectorized = self.vectorizer.transform( [text] )
         prediction = self.model.predict( vectorized.toarray() )
         
