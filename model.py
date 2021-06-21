@@ -42,13 +42,13 @@ class Model:
   
     def __clean(self, text: str):
         # Remove Hashtag
-        msg = re.sub(r'#', '', msg)
+        text = re.sub(r'#', '', text)
         # Remove twitter tag like @Nuttee
-        msg = re.sub("/(^|[^@\w])@(\w{1,15})\b/", "", msg)
-        msg = remove_emoji(msg)
+        text = re.sub("/(^|[^@\w])@(\w{1,15})\b/", "", text)
+        text = remove_emoji(text)
 
         # Remove punc and English alphabet
-        return msg.translate(str.maketrans('', '', string.printable))
+        return text.translate(str.maketrans('', '', string.printable))
   
     def predict(self, text: str):
         text = self.__clean(text)
