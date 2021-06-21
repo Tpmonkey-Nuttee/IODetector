@@ -1,4 +1,5 @@
 import discord
+import asyncio
 import time
 import random
 
@@ -70,6 +71,7 @@ class Model:
 
 class BotClient(discord.Client):
     def __init__(self, *args, **kwargs) -> None:
+        self.loop = asyncio.get_event_loop()
         super().__init__(*args, **kwargs)
         self.io_model = Model()        
 
