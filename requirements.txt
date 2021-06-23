@@ -1,4 +1,0 @@
-discord
-pythainlp
-sklearn
-nltk
